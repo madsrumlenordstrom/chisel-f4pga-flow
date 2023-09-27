@@ -5,6 +5,7 @@ project/target/
 rtl/
 f4pga/tools/
 f4pga/f4pga-examples/
+synth/build/
 .metals/
 .bloop/
 .vscode/

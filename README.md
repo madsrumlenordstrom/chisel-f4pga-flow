@@ -80,3 +80,16 @@ make program
 ```
 
 Which will automatically generate SystemVerilog which will then be synthesized to a bitstream file that is programmed to the FGPA.
+
+## Troubleshooting
+### Error: unable to open ftdi device
+Check that your device is properly plugged in and shows up when you run the ```lsusb``` command.
+If the device shows up it is most likely issues with permissions to USB devices.
+On some Linux distrubutions the user does not get permissions to USB devices by default.
+Trying to program an FPGA will result in an error since it is via USB.
+To fix this run the commands:
+```shell
+sudo bash -c 'echo ATTRS{idVendor}==\"0403\", ATTRS{idProduct}==\"6010\", MODE=\"666\", TAG+=\"uaccess\" > /etc/udev/rules.d/99-ftdi.rules'
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+You might need to change the ```idVendor``` and ```idProduct``` you can get these from running ```lsusb```.
