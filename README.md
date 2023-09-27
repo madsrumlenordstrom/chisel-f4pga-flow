@@ -5,6 +5,13 @@ The whole toolchain is open source since the synthesis is based on [F4PGA](https
 The project contains a Chisel modules which toggle an LED once per second.
 To program an FPGA with this design there are a few steps beforehand.
 
+## Dependencies
+This project assumes a Unix like operating system.
+Make sure you have the following dependencies installed:
+* [SBT](https://www.scala-sbt.org/download.html)
+* [JDK](https://adoptium.net/)
+* [Firtool](https://github.com/llvm/circt/releases)
+
 ## Generating SystemVerilog from Chisel
 Right now most synthesis tools only accepts less abstract HDLs like SystemVerilog.
 This means the Chisel code needs to be converted to SystemVerilog representation in order to synthesize it.
