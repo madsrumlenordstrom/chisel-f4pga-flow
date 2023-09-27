@@ -62,7 +62,7 @@ To program the FPGA plug in your FPGA via USB and run following command:
 ```shell
 make program
 ```
-You should now see an LED on the FPGA blinking if not see [Troubleshooting](README.md).
+You should now see an LED on the FPGA blinking if not see [Troubleshooting](README.md#troubleshooting).
 
 ## Tips
 ### Tools
