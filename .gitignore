@@ -1,0 +1,14 @@
+target/
+test_run_dir/
+project/project/
+project/target/
+rtl/
+f4pga/tools/
+f4pga/f4pga-examples/
+.metals/
+.bloop/
+.vscode/
+.idea/
+.bsp/
+config.mk
+metals.sbt
