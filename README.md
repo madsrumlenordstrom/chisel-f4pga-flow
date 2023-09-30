@@ -20,6 +20,7 @@ This can be done with the command:
 ```shell
 make rtl
 ```
+
 This will create a directory called ```rtl/``` where the SystemVerilog files are located.
 
 ## Installing the tools
@@ -33,8 +34,7 @@ make install
 ```
 
 This will create the directory ```f4pga/tools``` and ```f4pga/f4pga-examples``` which contains all the neccessary tools.
-The tools should only be installed once.
-If you ever want to delete the tools just delete these directories.
+The tools only needs to be installed once.
 
 ## Synthesizing the design
 The synthesis tools needs to know which FPGA board you are using.
@@ -45,6 +45,7 @@ It could for example look like this:
 ```plain
 BOARD = basys3
 ```
+
 Right now, this repository only supports the [Basys 3](https://digilent.com/reference/programmable-logic/basys-3/start) board.
 So it not strictly neccessary to make the configuration file as the project defaults to Basys 3.
 To synthsize the design just run following command:
@@ -52,6 +53,7 @@ To synthsize the design just run following command:
 ```shell
 make synth
 ```
+
 This will create the directory ```synth/build/basys3/```.
 
 ## Programming the FPGA
@@ -62,21 +64,32 @@ To program the FPGA plug in your FPGA via USB and run following command:
 ```shell
 make program
 ```
+
 You should now see an LED on the FPGA blinking if not see [Troubleshooting](#Troubleshooting).
 
 ## Tips
 ### Tools
+The tools take up rougly 6GB of storage so you might be interested in deleting them.
+If you ever want to delete the tools just run:
+
+```shell
+make uninstall
+```
+
 If you want to install the tools in another directory you can simply copy the file ```f4pga/install.sh``` to the directory where you see fit.
-When you run the script will similarly create the ```tools``` and ```f4pga-examples``` directories.
-To make this project reference the install in another directory simply edit the ```config.mk``` file created earlier contain install directories.
+When you run the script it will similarly create the ```tools``` and ```f4pga-examples``` directories.
+To make this project reference the install in another directory simply edit the ```config.mk``` file created earlier to contain install directories.
 For example it could look like this:
+
 ```plain
 BOARD = basys3
 F4PGA_INSTALL_DIR  = /home/madsrumlenordstrom/repos/f4pga/tools
 F4PGA_EXAMPLES_DIR = /home/madsrumlenordstrom/repos/f4pga/f4pga-examples
 ```
+
 This is also useful if you already have the tools installed and want to use them for another project.
-There is no reason to install them twice.
+There is no reason to install the tools twice.
+Beware that the uninstall command will also target the directories of these variables so make sure you know what you are doing.
 
 ### Makefile
 The Makefile is written such that dependencies are resolved.
@@ -86,10 +99,12 @@ This means if you made a change to the Chisel code and want to reprogram your FP
 make program
 ```
 
-Which will automatically generate SystemVerilog which will then be synthesized to a bitstream file that is programmed to the FGPA.
+Which will automatically generate SystemVerilog which will then be synthesized to a bitstream file that will be programmed to the FGPA.
+You do not need to manually run the whole chain of commands showed earlier.
 
 ### Testing
 You can run the blinky test by running following command:
+
 ```shell
 make test
 ```
@@ -107,3 +122,8 @@ sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
 You might need to change the ```idVendor``` and ```idProduct``` to another ID.
 You can get these from running ```lsusb``` while your FPGA board is plugged in.
+My Basys 3 board looks like this:
+
+```plain
+Bus 001 Device 004: ID 0403:6010 Future Technology Devices International, Ltd FT2232C/D/H Dual UART/FIFO IC
+```

@@ -23,7 +23,7 @@ TESTS       = $(shell find $(TESTDIR) -name '*.scala')
 # Targets (configured in config.mk)
 RTLFILE    ?= $(RTLDIR)/$(TOPMOD).sv
 MAINTARGET ?= $(MAIN)
-TESTTARGET ?= $(TOPMOD)
+TESTTARGET ?= $(TOPMOD)Tester
 BOARD      ?= basys3
 
 # F4PGA
@@ -54,7 +54,7 @@ program: $(RTLFILE)
 # Run specific test
 .PHONY: test
 test: $(SRCS) $(TESTS)
-	$(SBT) $(SBTFLAGS) testOnly "$(TESTTARGET)"
+	$(SBT) $(SBTFLAGS) "testOnly $(TESTTARGET)"
 
 # Run all tests
 .PHONY: testall
@@ -65,6 +65,10 @@ testall: $(SRCS) $(TESTS)
 .PHONY: install
 install:
 	cd $(F4PGADIR) && ./install.sh
+
+.PHONY: uninstall
+uninstall:
+	$(RM) -rf $(F4PGA_INSTALL_DIR) $(F4PGA_EXAMPLES_DIR)
 
 # Cleanup working directory
 .PHONY: clean
