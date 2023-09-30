@@ -19,7 +19,7 @@ class Blinky(clkFreq: Int) extends Module {
 }
 
 object BlinkyMain extends App {
-  println("Generatng SystemVerilog")
+  println("Generating SystemVerilog")
   ChiselStage.emitSystemVerilogFile(
     // Main chisel module
     gen = new Blinky(clkFreq = 100000000),

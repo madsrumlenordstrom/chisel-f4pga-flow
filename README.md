@@ -62,7 +62,7 @@ To program the FPGA plug in your FPGA via USB and run following command:
 ```shell
 make program
 ```
-You should now see an LED on the FPGA blinking if not see [Troubleshooting](README.md#troubleshooting).
+You should now see an LED on the FPGA blinking if not see [Troubleshooting](#Troubleshooting).
 
 ## Tips
 ### Tools
@@ -88,15 +88,22 @@ make program
 
 Which will automatically generate SystemVerilog which will then be synthesized to a bitstream file that is programmed to the FGPA.
 
+### Testing
+You can run the blinky test by running following command:
+```shell
+make test
+```
+
 ## Troubleshooting
 ### Error: unable to open ftdi device
 Check that your device is properly plugged in and shows up when you run the ```lsusb``` command.
-If the device shows up it is most likely issues with permissions to USB devices.
-On some Linux distrubutions the user does not get permissions to USB devices by default.
+If the device shows up the problem is most likely permission issues for USB devices.
+On some Linux distrubutions normal users does not get permissions to USB devices by default.
 Trying to program an FPGA will result in an error since it is via USB.
 To fix this run the commands:
 ```shell
 sudo bash -c 'echo ATTRS{idVendor}==\"0403\", ATTRS{idProduct}==\"6010\", MODE=\"666\", TAG+=\"uaccess\" > /etc/udev/rules.d/99-ftdi.rules'
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
-You might need to change the ```idVendor``` and ```idProduct``` you can get these from running ```lsusb```.
+You might need to change the ```idVendor``` and ```idProduct``` to another ID.
+You can get these from running ```lsusb``` while your FPGA board is plugged in.
