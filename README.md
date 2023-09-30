@@ -1,9 +1,11 @@
 # Chisel F4GPA Flow
 
-This repository contains a template and framework for generating bitstreams from [Chisel](https://www.chisel-lang.org/) HDL.
+This repository contains an example and framework for generating bitstreams from [Chisel](https://www.chisel-lang.org/) HDL.
 The whole toolchain is open source since the synthesis is based on [F4PGA](https://f4pga.org/).
-The project contains a Chisel modules which toggle an LED once per second.
+The project contains a Chisel module which toggles an LED once per second.
 To program an FPGA with this design there are a few steps beforehand.
+Right now, only the [Basys 3](https://digilent.com/reference/programmable-logic/basys-3/start) board is supported by this repository since that is what I have access to.
+If you manage to make it work with another board please open a pull request with your changes.
 
 ## Dependencies
 This project assumes a Unix like operating system.
@@ -35,6 +37,7 @@ make install
 
 This will create the directory ```f4pga/tools``` and ```f4pga/f4pga-examples``` which contains all the neccessary tools.
 The tools only needs to be installed once.
+If you already have the tools installed see [Tips](#Tools)
 
 ## Synthesizing the design
 The synthesis tools needs to know which FPGA board you are using.
