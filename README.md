@@ -12,7 +12,7 @@ This project assumes a Unix like operating system.
 Make sure you have the following dependencies installed:
 * [SBT](https://www.scala-sbt.org/download.html)
 * [JDK](https://adoptium.net/)
-* [Firtool](https://github.com/llvm/circt/releases)
+* [Firtool](https://github.com/llvm/circt/releases) (or switch to the chisel-3.5.6 branch)
 
 ## Generating SystemVerilog from Chisel
 Right now most synthesis tools only accepts less abstract HDLs like SystemVerilog.
