@@ -21,7 +21,7 @@ SRCS        = $(shell find $(SRCDIR) -name '*.scala')
 TESTS       = $(shell find $(TESTDIR) -name '*.scala')
 
 # Targets (configured in config.mk)
-RTLFILE    ?= $(RTLDIR)/$(TOPMOD).sv
+RTLFILE    ?= $(RTLDIR)/$(TOPMOD).v
 MAINTARGET ?= $(MAIN)
 TESTTARGET ?= $(TOPMOD)Tester
 BOARD      ?= basys3
